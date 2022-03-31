@@ -5,6 +5,6 @@ public class GitTest {
         System.out.println("学习git1");
         System.out.println("学习git2");
         System.out.println("学习git3");
-        System.out.println("学习git4");
+        System.out.println("master test");
     }
 }
