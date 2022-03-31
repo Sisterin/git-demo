@@ -7,5 +7,7 @@ public class GitTest {
         System.out.println("学习git3");
         System.out.println("master test");
         System.out.println("学习git4  test");
+        System.out.println("push  test");
+
     }
 }
