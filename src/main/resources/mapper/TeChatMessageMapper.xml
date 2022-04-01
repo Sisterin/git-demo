@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.system.mapper.TeChatMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.system.entity.pojo.TeChatMessage" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="CallbackCommand" property="callbackcommand" jdbcType="VARCHAR" />
+    <result column="GroupId" property="groupid" jdbcType="VARCHAR" />
+    <result column="Type" property="type" jdbcType="VARCHAR" />
+    <result column="From_Account" property="fromAccount" jdbcType="VARCHAR" />
+    <result column="Operator_Account" property="operatorAccount" jdbcType="VARCHAR" />
+    <result column="Random" property="random" jdbcType="INTEGER" />
+    <result column="MsgSeq" property="msgseq" jdbcType="INTEGER" />
+    <result column="MsgTime" property="msgtime" jdbcType="INTEGER" />
+    <result column="ClientIP" property="clientip" jdbcType="VARCHAR" />
+    <result column="OptPlatform" property="optplatform" jdbcType="VARCHAR" />
+    <result column="SdkAppid" property="sdkappid" jdbcType="VARCHAR" />
+    <result column="MsgBody" property="msgbody" jdbcType="LONGVARCHAR" />
+    <result column="AfterConversionMsgBody" property="afterconversionmsgbody" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+   <resultMap id="BaseResultMap1" type="com.system.entity.vo.TeChatMessageVo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <result column="From_Account" property="fromAccount" jdbcType="VARCHAR" />
+    <result column="Operator_Account" property="operatorAccount" jdbcType="VARCHAR" />
+    <result column="MsgSeq" property="msgseq" jdbcType="INTEGER" />
+    <result column="MsgTime" property="msgtime" jdbcType="INTEGER" />
+     <result column="GroupId" property="groupid" jdbcType="INTEGER" />
+    <result column="ClientIP" property="clientip" jdbcType="VARCHAR" />
+    <result column="OptPlatform" property="optplatform" jdbcType="VARCHAR" />
+    <result column="MsgBody" property="msgbody" jdbcType="LONGVARCHAR" />
+     <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  
+  <select id="selectBySelective" resultMap="BaseResultMap1"  parameterType="com.system.entity.pojo.TeChatMessage" >
+    select distinct CallbackCommand,GroupId,Type,From_Account,Operator_Account,
+    Random,MsgSeq,MsgTime,ClientIP,OptPlatform,MsgBody,FROM_UNIXTIME(MsgTime) as CreateTime from te_chat_message 
+    <where>
+    <if test="groupid!=null and groupid!=''">
+      and GroupId=#{groupid}
+    </if>
+     <if test="fromAccount!=null and fromAccount!=''">
+      and From_Account=#{fromAccount}
+    </if>
+     <if test="operatorAccount!=null and operatorAccount!=''">
+      and Operator_Account=#{operatorAccount}
+    </if>
+    <if test="stime != null and stime != ''">
+		and FROM_UNIXTIME(MsgTime)>= #{stime}
+	</if> 
+	<if test="etime != null and etime != ''">
+		and FROM_UNIXTIME(MsgTime) &lt; #{etime}
+	</if>
+    </where>
+     order  by MsgTime desc
+  </select>
+  
+    <select id="selectMessageList" resultMap="BaseResultMap1"  parameterType="com.system.entity.pojo.TeChatMessage" >
+    select distinct CallbackCommand,GroupId,Type,From_Account,Operator_Account,
+    Random,MsgSeq,MsgTime,ClientIP,OptPlatform,
+    (case  
+when AfterConversionMsgBody  is null then MsgBody
+when AfterConversionMsgBody is not  null then AfterConversionMsgBody
+end
+) as MsgBody,
+    FROM_UNIXTIME(MsgTime) as CreateTime from te_chat_message 
+    <where>
+    <if test="groupid!=null and groupid!=''">
+      and GroupId=#{groupid}
+    </if>
+     <if test="fromAccount!=null and fromAccount!=''">
+      and From_Account=#{fromAccount}
+    </if>
+     <if test="operatorAccount!=null and operatorAccount!=''">
+      and Operator_Account=#{operatorAccount}
+    </if>
+    <if test="stime != null and stime != ''">
+		and FROM_UNIXTIME(MsgTime)>= #{stime}
+	</if> 
+	<if test="etime != null and etime != ''">
+		and FROM_UNIXTIME(MsgTime) &lt; #{etime}
+	</if>
+    </where>
+     order  by MsgTime asc
+  </select>
+  
+  
+</mapper>

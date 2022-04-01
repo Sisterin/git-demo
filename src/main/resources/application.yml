@@ -1,0 +1,41 @@
+server:
+  servlet: 
+    context-path: /Wylm_WapPatServer/techat
+spring:
+  application:
+    name: system
+  jackson:
+        # 一定要注意这里是冒号,不是等号!!!
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+  profiles:
+    # 环境 dev|test|prod
+    #dev开发环境    prod生产环境  test测试环境
+    active: dev
+    
+logging:
+  config: classpath:logback/logback-${spring.profiles.active}.xml  
+
+
+mybatis:
+  type-aliases-package: com.system.entity
+  mapper-locations: classpath:mapper/*.xml
+
+mapper:
+    #mappers 多个接口时逗号隔开
+    mappers: com.system.common.base.MyMapper
+    not-empty: false
+    
+
+
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
+  rowBoundsWithCount: true
+  offsetAsPageNum: true
+  params: pageNum=pageNum;pageSize=pageSize;
+   
+  
+  
+spring.mvc.view.prefix: /WEB-INF/page/
+spring.mvc.view.suffix: .jsp

@@ -1,0 +1,27 @@
+<included>
+    <logger name="javax.activation" level="INFO" />
+    <logger name="javax.mail" level="WARN" />
+    <logger name="com.sun" level="ERROR" />
+    <logger name="org.hibernate" level="INFO" />
+    <logger name="org.springframework"  level="ERROR"  />
+    <logger name="com.mchange" level="INFO" />
+    <logger name="org.apache.ibatis" level="INFO" />
+    <logger name="com.baomidou" level="INFO" />
+    <logger name="org.mybatis" level="INFO" />
+    <logger name="org.apache.shiro" level="INFO" />
+    <logger name="org.apache.http" level="INFO" />
+    <logger name="org.quartz" level="INFO" />
+    <logger name="net.sf.ehcache" level="INFO" />
+     <logger name="com.zaxxer.hikari.pool.HikariPool" level="INFO" />
+    <logger name="com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator" level="INFO" />
+    <logger name="com.zaxxer.hikari.pool.PoolBase" level="INFO" />
+    <logger name="o.s.c.a.ClassPathBeanDefinitionScanner" level="INFO" additivity="false"/>
+    <logger name="t.m.s.mapper.ClassPathMapperScanner" level="INFO" additivity="false"/>
+    <logger name="o.s.b.f.s.DefaultListableBeanFactory" level="INFO" additivity="false"/>
+    <logger name="o.mybatis.spring.SqlSessionFactoryBean" level="INFO" additivity="false"/>
+    <logger name="org.apache.zookeeper.ClientCnxn" level="INFO"/>
+    <logger name="o.h.v.i.xml.config.ResourceLoaderHelper" level="INFO" additivity="false"/>
+    <logger name="o.h.v.i.engine.ValidatorFactoryImpl" level="INFO" additivity="false"/>
+    <logger name="ConditionEvaluationReportLoggingListener" level="INFO" additivity="false"/>
+    <logger name="com.netflix.curator.RetryLoop" level="INFO" />
+</included>

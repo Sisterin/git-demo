@@ -1,0 +1,26 @@
+server:
+  port: 18190
+  tomcat:
+       uri-encoding: UTF-8
+       max-threads: 1000
+       min-spare-threads: 30
+spring:
+  datasource:
+    name: system
+    url: jdbc:mysql://192.168.0.176:30297/huanxin?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&useSSL=false
+    username: business_data
+    password: 808e-v78u-b1da-11EA-aecc
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+
+        
+
+#转换之后的文件存储路径
+storepath: /data/chatfiles/
+#sdkappid
+SDKAppID: 1400516574
+#秘钥
+Key: 539bb2499ccb1e05865136c3643befdb2137de93c6a59a2966698577ede555e2
+#管理员账号
+ADMINACCOUNT: administrator
